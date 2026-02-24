@@ -87,6 +87,8 @@ body {
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 10px 30px rgba(231, 76, 60, 0.4);
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn-continuar:hover {

@@ -146,6 +146,24 @@
             opacity: 1;
         }
         
+        .video-container.esconder {
+            opacity: 0;
+        }
+        
+        .mensagem-final-final {
+            display: none;
+            color: white;
+            font-size: 2.5em;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .mensagem-final-final.mostrar {
+            display: block;
+            opacity: 1;
+        }
+        
         .video-container video {
             max-width: 90%;
             max-height: 90%;
@@ -200,6 +218,10 @@
         </video>
     </div>
     
+    <div class="mensagem-final-final" id="mensagemFinalFinal">
+        Obrigado por tudo princesa, eu te amo muito!
+    </div>
+    
     <audio id="musica" loop>
         <source src="YTDown.com_YouTube_Charlie-Brown-Jr-Ceu-Azul-instrumental-r_Media_nZokCXeUHwY_001_1080p.mp3" type="audio/mpeg">
     </audio>
@@ -245,6 +267,19 @@
                             setTimeout(() => {
                                 videoContainer.classList.add('mostrar');
                                 video.play(); // Tocar o vídeo só quando aparecer
+                                
+                                // Quando o vídeo terminar
+                                video.onended = function() {
+                                    videoContainer.classList.add('esconder');
+                                    
+                                    // Após fade out, mostrar mensagem final
+                                    setTimeout(() => {
+                                        videoContainer.style.display = 'none';
+                                        const mensagemFinalFinal = document.getElementById('mensagemFinalFinal');
+                                        mensagemFinalFinal.style.display = 'block';
+                                        setTimeout(() => mensagemFinalFinal.classList.add('mostrar'), 10);
+                                    }, 1500);
+                                };
                             }, 10);
                         }, 1500);
                     }, 5000);

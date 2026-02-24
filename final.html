@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .btn-play {
+            background: transparent;
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.5em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-play:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
+        
+        .btn-play.hidden {
+            display: none;
+        }
+        
+        .conteudo {
+            display: none;
+            width: 100%;
+            height: 100%;
+            padding: 40px;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+        
+        .conteudo.mostrar {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .conteudo.esconder {
+            opacity: 0;
+        }
+        
+        .coluna-fotos {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .foto {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+        
+        .centro {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 40px;
+        }
+        
+        .texto {
+            color: white;
+            font-size: 1.1em;
+            line-height: 1.8;
+            text-align: justify;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        .texto::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .texto::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .texto::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+        
+        .texto p {
+            margin-bottom: 15px;
+        }
+        
+        .mensagem-final {
+            display: none;
+            color: white;
+            font-size: 2em;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .mensagem-final.mostrar {
+            display: block;
+            opacity: 1;
+        }
+        
+        .mensagem-final.esconder {
+            opacity: 0;
+        }
+        
+        .video-container {
+            display: none;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .video-container.mostrar {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .video-container video {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <button class="btn-play" id="btnPlay" onclick="iniciarMusica()">▶ Clique aqui</button>
+    
+    <div class="conteudo" id="conteudo">
+        <div class="coluna-fotos">
+            <img src="nos1.jpg" alt="Nós" class="foto">
+            <img src="nos2.jpg" alt="Nós" class="foto">
+        </div>
+        
+        <div class="centro">
+            <div class="texto">
+                <p>Fiz esse site para descontrair um pouco, pois estou passando num momento muito difícil da minha vida, tendo que escolher entre muitas coisas, tendo que criar responsabilidade muito cedo com apenas 16 anos.</p>
+                
+                <p>Minha vida depois que eu te conheci, Mariana, mudou. Eu a vejo diferente todos os dias, você sabe muita coisa da minha vida pessoal e sabe que não foi fácil chegar até onde eu cheguei, fiz coisas ruins, pensamentos ruins e eu não tenho vergonha nenhuma de falar que você me ajuda todos os dias.</p>
+                
+                <p>Eu tenho orgulho da mulher que você é, estudiosa, dedicada, inteligente, atenciosa, educada, cheirosa, entre outros. Se fosse pra ficar falando suas qualidades ficaria aqui até 2039 e olha que ainda não ia acabar kkkk.</p>
+                
+                <p>Você me faz querer viver, me fez ter mais força de vontade pra tudo, você foi um anjo na minha vida e igual eu disse pra você há alguns dias, eu agradeço a Deus toda vez por te ter, tenho muita sorte.</p>
+                
+                <p>Às vezes sei que não sou o garoto perfeito, que tenho meus erros e meus vacilos... mas aprendo com eles, me arrependo e tento consertar, sou jovem e erro, mas isso não é justificativa, quero ser melhor para você, pois sinto que não sou o suficiente sempre quando precisa.</p>
+                
+                <p>Eu te amo com toda minha alma, Mariana Araújo.</p>
+            </div>
+        </div>
+        
+        <div class="coluna-fotos">
+            <img src="nos3.jpg" alt="Nós" class="foto">
+            <img src="nosmini1.jpg" alt="Nós" class="foto">
+        </div>
+    </div>
+    
+    <div class="mensagem-final" id="mensagemFinal">
+        Eu ainda vou cumprir o que te prometi no restaurante
+    </div>
+    
+    <div class="video-container" id="videoContainer">
+        <video id="video" controls autoplay>
+            <source src="nosvideo.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <audio id="musica" loop>
+        <source src="YTDown.com_YouTube_Charlie-Brown-Jr-Ceu-Azul-instrumental-r_Media_nZokCXeUHwY_001_1080p.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script>
+        function iniciarMusica() {
+            const musica = document.getElementById('musica');
+            const btn = document.getElementById('btnPlay');
+            const conteudo = document.getElementById('conteudo');
+            
+            musica.volume = 0.15;
+            musica.play();
+            btn.classList.add('hidden');
+            conteudo.style.display = 'flex';
+            setTimeout(() => conteudo.classList.add('mostrar'), 10);
+            
+            // Após 35 segundos, fade out do conteúdo
+            setTimeout(() => {
+                conteudo.classList.add('esconder');
+                
+                // Após fade out, mostrar mensagem
+                setTimeout(() => {
+                    conteudo.style.display = 'none';
+                    const mensagemFinal = document.getElementById('mensagemFinal');
+                    mensagemFinal.style.display = 'block';
+                    setTimeout(() => mensagemFinal.classList.add('mostrar'), 10);
+                    
+                    // Após 5 segundos, fade out da mensagem
+                    setTimeout(() => {
+                        mensagemFinal.classList.add('esconder');
+                        
+                        // Após fade out, mostrar vídeo
+                        setTimeout(() => {
+                            mensagemFinal.style.display = 'none';
+                            const videoContainer = document.getElementById('videoContainer');
+                            const video = document.getElementById('video');
+                            
+                            // Abaixar volume da música e ajustar volume do vídeo
+                            musica.volume = 0.05;
+                            video.volume = 0.15;
+                            
+                            videoContainer.style.display = 'flex';
+                            setTimeout(() => videoContainer.classList.add('mostrar'), 10);
+                        }, 1500);
+                    }, 5000);
+                }, 2000);
+            }, 35000);
+        }
+    </script>
+</body>
+</html>

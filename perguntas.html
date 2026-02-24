@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguntas - Jornada Especial ❤️</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="etapa ativa">
+            <h2 class="titulo-perguntas">O quanto você sabe sobre a gente?</h2>
+            
+            <div class="pergunta-container">
+                <div class="nivel-badge facil">Fácil</div>
+                <p class="pergunta-texto">1. Que dia a gente trocou a primeira mensagem?</p>
+                <div class="opcoes-container">
+                    <button class="btn-opcao" onclick="selecionarOpcao(1, '28/04', false)">28/04</button>
+                    <button class="btn-opcao" onclick="selecionarOpcao(1, '16/07', true)">16/07</button>
+                    <button class="btn-opcao" onclick="selecionarOpcao(1, '09/03', false)">09/03</button>
+                    <button class="btn-opcao" onclick="selecionarOpcao(1, '12/10', false)">12/10</button>
+                </div>
+            </div>
+
+            <div class="pergunta-container">
+                <div class="nivel-badge medio">Médio</div>
+                <p class="pergunta-texto">2. Como nos conhecemos?</p>
+                <div class="opcoes-container opcoes-texto">
+                    <button class="btn-opcao" onclick="selecionarOpcao(2, 'amigos', false)">Por amigos da escola (Ana Clara, Luis, Negão Original)</button>
+                    <button class="btn-opcao" onclick="selecionarOpcao(2, 'festas', false)">Festas, shows, resenhas etc</button>
+                    <button class="btn-opcao" onclick="selecionarOpcao(2, 'amiga', true)">Uma "amiga" te apresentou pra mim</button>
+                    <button class="btn-opcao" onclick="selecionarOpcao(2, 'instagram', false)">Pedi seu Instagram quando te vi a primeira vez</button>
+                </div>
+            </div>
+
+            <div class="pergunta-container">
+                <div class="nivel-badge dificil">Difícil</div>
+                <p class="pergunta-texto">3. Qual meu nome completo e minha data de aniversário?</p>
+                <div class="opcoes-container opcoes-texto">
+                    <button class="btn-opcao" onclick="selecionarOpcao(3, 'opcao1', false)">Arthur Guimarães Francisco | 28 / 12 / 2009</button>
+                    <button class="btn-opcao" onclick="selecionarOpcao(3, 'opcao2', false)">Arthur Pardini Guimarães | 18 / 04 / 2010</button>
+                    <button class="btn-opcao" onclick="selecionarOpcao(3, 'opcao3', false)">Arthur Pardimi Aquino | 27 / 08 / 2008</button>
+                    <button class="btn-opcao" onclick="selecionarOpcao(3, 'opcao4', true)">Arthur Francisco Guimarães | 28 / 17 / 2009</button>
+                </div>
+            </div>
+
+            <button class="btn-verificar" onclick="verificarRespostas()">
+                Verificar Respostas
+            </button>
+
+            <p class="feedback" id="feedback"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

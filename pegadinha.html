@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>...</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .container-pegadinha {
+            background: transparent;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        
+        .mensagem-pegadinha {
+            color: white;
+            font-size: 2em;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: aparecer 2s ease-in-out 3s forwards;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            padding: 0 20px;
+        }
+        
+        .mensagem-whatsapp {
+            color: white;
+            font-size: 1.5em;
+            opacity: 0;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 600px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: none;
+        }
+        
+        .mensagem-whatsapp.mostrar {
+            display: block;
+            animation: aparecer 1s ease-in-out forwards;
+        }
+        
+        .mensagem-zoeira {
+            color: white;
+            font-size: 1.8em;
+            opacity: 0;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            display: none;
+        }
+        
+        .mensagem-zoeira.mostrar {
+            display: block;
+            animation: aparecer 0.5s ease-in-out forwards;
+        }
+        
+        .btn-continuar-final {
+            opacity: 0;
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+        }
+        
+        .btn-continuar-final.mostrar {
+            display: block;
+            animation: aparecer 1s ease-in-out forwards;
+        }
+        
+        .btn-continuar-pegadinha {
+            opacity: 0;
+            animation: aparecer 1s ease-in-out 5s forwards;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+        
+        @keyframes aparecer {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-pegadinha">
+        <p class="mensagem-pegadinha">Achou que ia ser fácil assim né?</p>
+        <p class="mensagem-zoeira" id="mensagemZoeira">Tá difícil aí dona Mariana? KKK</p>
+        <button class="btn-continuar btn-continuar-pegadinha" id="btnFugitivo" onmouseover="fugirBotao()">
+            Continuar
+        </button>
+        <div class="mensagem-whatsapp" id="mensagemWhatsapp">
+            Para continuar me mande um "eu te amo nenem" no WhatsApp para eu ter certeza de que está fazendo certinho
+        </div>
+        <button class="btn-continuar btn-continuar-final" id="btnFinal" onclick="window.location.href='perguntas3.html'">
+            Continuar
+        </button>
+    </div>
+
+    <script>
+        let tentativas = 0;
+        
+        function fugirBotao() {
+            const btn = document.getElementById('btnFugitivo');
+            const mensagem = document.getElementById('mensagemWhatsapp');
+            const zoeira = document.getElementById('mensagemZoeira');
+            const btnFinal = document.getElementById('btnFinal');
+            
+            if (tentativas < 5) {
+                // Gerar posição aleatória
+                const maxX = window.innerWidth - btn.offsetWidth - 50;
+                const maxY = window.innerHeight - btn.offsetHeight - 50;
+                
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+                
+                btn.style.left = randomX + 'px';
+                btn.style.top = randomY + 'px';
+                btn.style.transform = 'none';
+                
+                tentativas++;
+                
+                // Na 3ª tentativa, mostrar mensagem de zoeira
+                if (tentativas === 3) {
+                    zoeira.classList.add('mostrar');
+                    setTimeout(() => {
+                        zoeira.classList.remove('mostrar');
+                    }, 2500);
+                }
+                
+                // Na 5ª tentativa, esconder botão e mostrar mensagem
+                if (tentativas === 5) {
+                    btn.style.display = 'none';
+                    mensagem.classList.add('mostrar');
+                    
+                    // Após 5 segundos, mostrar botão final
+                    setTimeout(() => {
+                        btnFinal.classList.add('mostrar');
+                    }, 5000);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

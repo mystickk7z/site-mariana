@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguntas - Fase 2 ❤️</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="etapa ativa">
+            <h2 class="titulo-perguntas">Agora vamos ver se você realmente me conhece...</h2>
+            
+            <div class="pergunta-container">
+                <div class="nivel-badge facil">Fácil</div>
+                <p class="pergunta-texto">1. Qual figurinha eu mais uso com você quando estamos conversando no WhatsApp?</p>
+                <div class="opcoes-container opcoes-imagens">
+                    <button class="btn-opcao btn-imagem" onclick="selecionarOpcao(1, 'bebepensativo', true)">
+                        <img src="bebepensativo.jpg" alt="Bebê Pensativo">
+                    </button>
+                    <button class="btn-opcao btn-imagem" onclick="selecionarOpcao(1, 'bebepreto', false)">
+                        <img src="bebepreto.jpg" alt="Bebê Preto">
+                    </button>
+                    <button class="btn-opcao btn-imagem" onclick="selecionarOpcao(1, 'gatinhopidao', false)">
+                        <img src="gatinhopidao.jpg" alt="Gatinho Pidão">
+                    </button>
+                    <button class="btn-opcao btn-imagem" onclick="selecionarOpcao(1, 'noiapensativo', false)">
+                        <img src="noiapensativo.jpg" alt="Noia Pensativo">
+                    </button>
+                </div>
+            </div>
+
+            <div class="pergunta-container">
+                <div class="nivel-badge medio">Médio</div>
+                <p class="pergunta-texto">2. Onde foi nosso primeiro beijo?</p>
+                <div class="opcoes-container opcoes-texto">
+                    <button class="btn-opcao" onclick="selecionarOpcao(2, 'festa', false)">Na festa junina do D.A</button>
+                    <button class="btn-opcao" onclick="selecionarOpcao(2, 'luca', false)">Na casa do Luca</button>
+                    <button class="btn-opcao" onclick="selecionarOpcao(2, 'vovo', true)">Na porta da casa da sua vovó</button>
+                    <button class="btn-opcao" onclick="selecionarOpcao(2, 'onibus', false)">No ponto de ônibus</button>
+                </div>
+            </div>
+
+            <div class="pergunta-container">
+                <div class="nivel-badge dificil">Difícil</div>
+                <p class="pergunta-texto">3. Qual foi a DATA em que eu te disse o primeiro "eu te amo"? (Contém pegadinha)</p>
+                <div class="opcoes-container opcoes-texto">
+                    <button class="btn-opcao" onclick="selecionarOpcao(3, '23/12', true)">23/12</button>
+                    <button class="btn-opcao" onclick="selecionarOpcao(3, '16/12', false)">16/12</button>
+                    <button class="btn-opcao" onclick="selecionarOpcao(3, '01/01', false)">01/01</button>
+                    <button class="btn-opcao" onclick="selecionarOpcao(3, '21/12', false)">21/12</button>
+                </div>
+            </div>
+
+            <button class="btn-verificar" onclick="verificarRespostas()">
+                Verificar Respostas
+            </button>
+
+            <p class="feedback" id="feedback"></p>
+        </div>
+    </div>
+
+    <script src="script2.js"></script>
+</body>
+</html>

@@ -175,6 +175,41 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        
+        @media (max-width: 768px) {
+            .conteudo {
+                flex-direction: column;
+                padding: 20px;
+                overflow-y: auto;
+            }
+            
+            .coluna-fotos {
+                flex-direction: row;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .foto {
+                width: 45%;
+                height: auto;
+                aspect-ratio: 1;
+            }
+            
+            .centro {
+                padding: 20px 0;
+                width: 100%;
+            }
+            
+            .texto {
+                font-size: 1em;
+                max-height: none;
+            }
+            
+            .mensagem-final-final {
+                font-size: 1.5em;
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>

@@ -110,7 +110,7 @@
     <div class="container-pegadinha">
         <p class="mensagem-pegadinha">Achou que ia ser fácil assim né?</p>
         <p class="mensagem-zoeira" id="mensagemZoeira">Tá difícil aí dona Mariana? KKK</p>
-        <button class="btn-continuar btn-continuar-pegadinha" id="btnFugitivo" onmouseover="fugirBotao()">
+        <button class="btn-continuar btn-continuar-pegadinha" id="btnFugitivo" onmouseover="fugirBotao()" ontouchstart="fugirBotao(event)">
             Continuar
         </button>
         <div class="mensagem-whatsapp" id="mensagemWhatsapp">
@@ -124,10 +124,11 @@
     <script>
         let tentativas = 0;
         
-        function fugirBotao() {
+        function fugirBotao(event) {
+            if (event) event.preventDefault(); // Prevenir comportamento padrão no touch
+            
             const btn = document.getElementById('btnFugitivo');
             const mensagem = document.getElementById('mensagemWhatsapp');
-            const zoeira = document.getElementById('mensagemZoeira');
             const btnFinal = document.getElementById('btnFinal');
             
             if (tentativas < 5) {
@@ -146,6 +147,7 @@
                 
                 // Na 3ª tentativa, mostrar mensagem de zoeira
                 if (tentativas === 3) {
+                    const zoeira = document.getElementById('mensagemZoeira');
                     zoeira.classList.add('mostrar');
                     setTimeout(() => {
                         zoeira.classList.remove('mostrar');
